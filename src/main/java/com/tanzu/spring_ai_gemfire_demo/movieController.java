@@ -96,7 +96,7 @@ public class movieController {
       //Ask vector db to retieve movie that are close to the user request 
       logger.info("Looking for vectors similar to your request");
       //SearchRequest query = SearchRequest.query(request);
-      SearchRequest query = SearchRequest.query(request).withTopK(20);
+      SearchRequest query = SearchRequest.query(request);
       List<Document> similarMovies = movieVectorStore.similaritySearch(query);
 
       //parse the vector list to rebuild movie object on your own
@@ -128,7 +128,7 @@ public class movieController {
 
     @GetMapping("/movies/chat")
     public String chatAboutMovies(@RequestParam(value = "question", defaultValue = "what is the first Ranked movie in our collection? ") String question) {
-      SearchRequest query = SearchRequest.query(question).withTopK(20);
+      SearchRequest query = SearchRequest.query(question);
       List<Document> similarMovies = movieVectorStore.similaritySearch(query);
       String documents = similarMovies.stream().map(Document::getContent).collect(Collectors.toList()).toString();
       return chatClient.prompt()

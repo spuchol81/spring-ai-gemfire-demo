@@ -10,7 +10,7 @@ spring:
         model: llama3
       chat:
         model: llama3
-    openai:
-      chat:
-        options:
-          model: gpt-4o
+    #openai:
+      #chat:
+        #options:
+          #model: gpt-4o
