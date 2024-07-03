@@ -15,8 +15,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.ai.reader.JsonReader;
 import org.springframework.ai.vectorstore.VectorStore;
-import org.springframework.ai.vectorstore.GemFireVectorStore;
-import org.springframework.ai.vectorstore.GemFireVectorStore.GemFireVectorStoreConfig;
+import org.springframework.ai.vectorstore.PgVectorStore;
+//import org.springframework.ai.vectorstore.GemFireVectorStore;
+//import org.springframework.ai.vectorstore.GemFireVectorStore.GemFireVectorStoreConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,6 +25,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -34,7 +36,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 //@Profile("init")
 @Configuration
 class InitConfig {
-    @Bean
+
+    /*@Bean
     public GemFireVectorStoreConfig gemFireVectorStoreConfig() {
       return GemFireVectorStoreConfig.builder()
                                      .withHost("localhost")
@@ -47,7 +50,7 @@ class InitConfig {
     var  mystore = new GemFireVectorStore(config, embeddingModel); //index to be set after instantiation
     mystore.setIndexName("movies");
     return mystore;
-}
+}*/
 }
 
 @Component

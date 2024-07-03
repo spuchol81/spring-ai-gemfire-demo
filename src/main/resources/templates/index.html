@@ -292,7 +292,7 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
                     }
                 }
             };
-            xhr.open('GET', 'http://localhost:8080/api/movies/chat?question=' + encodeURIComponent(question));
+            xhr.open('GET', 'api/movies/chat?question=' + encodeURIComponent(question));
             xhr.send();
         }
 
