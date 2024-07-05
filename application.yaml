@@ -4,6 +4,9 @@ applications:
   memory: 2G
   random-route: true
   path: target/spring_ai_gemfire_demo-0.0.1-SNAPSHOT.jar
+  services:
+   - llm
+   - vectordb
   env:
     JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
     SPRING_PROFILES_ACTIVE: 

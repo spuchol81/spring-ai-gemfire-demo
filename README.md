@@ -29,50 +29,11 @@ The following guides illustrate how to use some features concretely:
 1. Start the gemfire db:
 
     ```bash
-    docker compose up
+    docker run -it --rm --name postgres -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres ankane/pgvector
     ```
 
-2. Create the movies index:
-
-    ```bash
-    curl -X POST http://localhost:7071/gemfire-vectordb/v1/indexes -H "Content-Type: application/json" -d
-    '{
-      "name": "movies"
-    }'
-    ```
-
-3. Check the creation of the index (notice number of embeddings):
-
-    ```bash
-    curl http://localhost:7071/gemfire-vectordb/v1/indexes/movies
-    {
-       "name" : "movies",
-       "fields" : [ ],
-       "beam-width" : 100,
-       "max-connections" : 16,
-       "vector-similarity-function" : "COSINE",
-       "buckets" : 1,
-       "number-of-embeddings" : 0
-    }% 
-    ```
-4. Start the app in init mode:
+2. Start the app in init mode:
 
     ```bash
     mvn spring-boot:run -Dspring-boot.run.profiles=init  
     ```
-
-5. Check the index again (notice number of embeddings):
-   
-   ```bash
-   curl http://localhost:7071/gemfire-vectordb/v1/indexes/movies
-        {
-        "name" : "movies",
-        "fields" : [ ],
-        "beam-width" : 100,
-        "max-connections" : 16,
-        "vector-similarity-function" : "COSINE",
-        "buckets" : 1,
-        "number-of-embeddings" : 250
-        }%
-    ```
-

@@ -3,9 +3,7 @@ debug: true
 vectordbsuffix: openai
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres
   config:
     import: "optional:classpath:/creds.yaml"
   ai:
@@ -30,8 +28,9 @@ spring:
   config:
     activate:
       on-profile: cloud
+  ai:
+    openai:
+      api-key: ${vcap.services.llm.credentials.api_key}
   datasource:
-    url: jdbc:postgresql://10.0.8.67:5432/postgres
-    username: pgadmin
-    password: WB084hGL3cH6yC2z7951
+    url: ${vcap.services.vectordb.credentials.jdbcUrl}
 ---
