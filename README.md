@@ -1,8 +1,3 @@
-# Read Me First
-The following was discovered as part of building this project:
-
-* No Docker Compose services found. As of now, the application won't start! Please add at least one service to the `compose.yaml` file.
-
 # Getting Started
 
 ### Reference Documentation
